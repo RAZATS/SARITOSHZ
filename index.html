@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SARITOSHZ - Underground Concert</title>
+  <style>
+    /* Add custom styles for the background and countdown */
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 100px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 30px;
+    }
+
+    #countdown {
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+  </style>
+  <script>
+    // Add JavaScript for the countdown
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var countdownElement = document.getElementById("countdown");
+
+      var countdownDate = new Date("2023-05-12T00:00:00Z").getTime();
+
+      var countdownInterval = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countdownDate - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        countdownElement.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        if (distance < 0) {
+          clearInterval(countdownInterval);
+          countdownElement.innerHTML = "The event has started!";
+        }
+      }, 1000);
+    });
+  </script>
+</head>
+<body>
+  <h1>SARITOSHZ</h1>
+  <div id="countdown"></div>
+</body>
+</html>
